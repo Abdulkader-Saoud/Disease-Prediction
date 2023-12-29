@@ -36,7 +36,8 @@ label {
 
 select {
     width: 310px;
-    height: 120px;
+    height: 130px;
+    min-height: 130px;
     padding: 10px;
     margin-top: 10px;
     border-radius: 5px;
@@ -83,12 +84,45 @@ h2 {
     width: 150px;
     margin-top: 20px;
     height: 40px;
+    min-height: 40px;
     border: none;
     border-radius: 5px;
     border: 1px solid #F9F7F7;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 #submitSymptomsButton:hover {
     background-color: #2A4B7C;
     transform: scale(1.1);
+}
+#diseaseResult {
+    visibility: hidden;
+    width: 450px;
+    height: 150px;
+    margin-top: 20px;
+    background-color: #3F72AF;
+    color: #F9F7F7;
+    border-radius: 5px;
+    border: 2px solid #F9F7F7;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.result {
+    width: 150px;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.result h3 {
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 0;
+}
+.result p {
+    margin: 0;
+    padding: 0;
 }

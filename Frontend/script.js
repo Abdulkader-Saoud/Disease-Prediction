@@ -86,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function submitSymptoms() {
-        // You can use the fetch API to send a POST request to your API
         fetch('http://localhost:5000/api', {
             method: 'POST',
             headers: {
@@ -96,7 +95,14 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            const resultDiv = document.getElementById('diseaseResult');
+            resultDiv.style.visibility = 'visible';
+            const DTresult = document.getElementById('decisionTreeResult');
+            const NBresult = document.getElementById('naiveBayesResult');
+            const KNNresult = document.getElementById('knnResult');
+            DTresult.innerText = data.DT;
+            NBresult.innerText = data.NB;
+            KNNresult.innerText = data.KNN;
         })
         .catch(error => {
             console.error('Error:', error);

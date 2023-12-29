@@ -1,10 +1,10 @@
 import pandas as pd
-import numpy as np
 from sklearn.preprocessing import LabelEncoder
 
-data = pd.read_csv('processed_data.csv')
+data = pd.read_csv('datasetV1.csv')
 
 diseases = data['Disease']
+
 data = data.drop('Disease', axis=1)
 
 one_hot_encoded_data = pd.get_dummies(data, prefix='', prefix_sep='')
