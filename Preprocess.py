@@ -1,45 +1,25 @@
 import pandas as pd
-from sklearn.preprocessing import  LabelEncoder
-from sklearn.model_selection import train_test_split ,RandomizedSearchCV
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import accuracy_score
-from sklearn import tree
-import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.preprocessing import LabelEncoder
 
+data = pd.read_csv('processed_data.csv')
 
-data = pd.read_csv('dataset.csv')
+diseases = data['Disease']
+data = data.drop('Disease', axis=1)
+
+one_hot_encoded_data = pd.get_dummies(data, prefix='', prefix_sep='')
+
+merged_data = one_hot_encoded_data.groupby(axis=1, level=0).max()
+
+processed_data = pd.concat([diseases, merged_data], axis=1)
+
 disease_label_encoder = LabelEncoder()
-disease_encoded = disease_label_encoder.fit_transform(data['Disease'])
-encoded_disease_mapping = dict(zip(disease_label_encoder.classes_, range(len(disease_label_encoder.classes_))))
+processed_data['Disease'] = disease_label_encoder.fit_transform(processed_data['Disease'])
+
+encoded_diseases_df = pd.DataFrame({'Encoded_Disease': processed_data['Disease'], 'Disease': diseases})
+encoded_diseases_df = encoded_diseases_df.drop_duplicates()
+
+processed_data.to_csv('processed_data.csv', index=False)
 
 
-
-df = pd.concat([pd.DataFrame({'Disease': disease_encoded}), pd.get_dummies(data.iloc[:, 1:], prefix='', prefix_sep='')], axis=1)
-
-df.to_csv('encoded_data.csv', index=False)
-
-#Decision Tree Classifier
-
-X = df.drop(columns=['Disease'])
-y = df['Disease']
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-clf = DecisionTreeClassifier(max_depth=50, min_samples_split=2, random_state=42)
-
-clf.fit(X_train, y_train)
-
-y_pred = clf.predict(X_test)
-
-accuracy = accuracy_score(y_test, y_pred)
-
-print("Accuracy: " + str(accuracy))
-
-
-fig = plt.figure(figsize=(25,20))
-_ = tree.plot_tree(clf, 
-                   feature_names= df.columns[1:],  
-                   class_names=  list(encoded_disease_mapping.keys()),
-                   filled=True)
-
-plt.savefig('DecisionTree.pdf')
+encoded_diseases_df.to_csv('encoded_diseases.csv', index=False)

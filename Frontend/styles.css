@@ -1,0 +1,94 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #112D4E;
+    font-family: 'Rubik', sans-serif;
+}
+
+h1 {
+    color: #F9F7F7;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh; 
+}
+
+label {
+    color: white;
+}
+
+#symptomSearch {
+    width: 300px;
+    height: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 3px solid #3F72AF;
+}
+
+select {
+    width: 310px;
+    height: 120px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 3px solid #3F72AF;
+}
+
+#selectedSymptoms {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    
+    max-width: 400px;
+    margin-top: 20px;
+    background-color: #3F72AF;
+    color: #F9F7F7;
+    border-radius: 5px;
+    border: 2px solid #F9F7F7;
+}
+h2 {
+    color: #F9F7F7;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+.selected-symptom-button {
+    background-color: #3F72AF;
+    color: #FFFFFF;
+    width: 50%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    border-bottom: 1px solid #F9F7F7;
+    cursor: pointer;
+}
+
+.selected-symptom-button:hover {
+    background-color: #2A4B7C;
+}
+
+#submitSymptomsButton {
+    background-color: #3F72AF;
+    color: #FFFFFF;
+    width: 150px;
+    margin-top: 20px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid #F9F7F7;
+    cursor: pointer;
+}
+#submitSymptomsButton:hover {
+    background-color: #2A4B7C;
+    transform: scale(1.1);
+}
