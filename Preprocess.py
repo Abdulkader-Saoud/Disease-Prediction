@@ -19,7 +19,6 @@ processed_data['Disease'] = disease_label_encoder.fit_transform(processed_data['
 encoded_diseases_df = pd.DataFrame({'Encoded_Disease': processed_data['Disease'], 'Disease': diseases})
 encoded_diseases_df = encoded_diseases_df.drop_duplicates()
 
-processed_data.to_csv('processed_data.csv', index=False)
+# processed_data.to_csv('processed_data.csv', index=False)
 
-
-encoded_diseases_df.to_csv('encoded_diseases.csv', index=False)
+# encoded_diseases_df.to_csv('encoded_diseases.csv', index=False)

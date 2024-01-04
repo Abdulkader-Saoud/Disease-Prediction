@@ -21,6 +21,8 @@ with open('./Models/DT_model.pkl', 'rb') as model_file:
 with open('./Models/NB_model.pkl', 'rb') as model_file:
     Nb_model = pickle.load(model_file)
 
+with open('./Models/KNN_model.pkl', 'rb') as model_file:
+    Knn_model = pickle.load(model_file)
 
 
 @app.route('/api', methods=['POST'])
@@ -32,7 +34,7 @@ def api():
         result = {}
         result['DT'] = Diseases[Dt_model.predict([result_array])[0]]
         result['NB'] = Diseases[Nb_model.predict([result_array])[0]]
-        result["KNN"] = "Not Implemented"
+        result["KNN"] = Diseases[Knn_model.predict([result_array])[0]]
         print(result)
 
         return jsonify(result)
