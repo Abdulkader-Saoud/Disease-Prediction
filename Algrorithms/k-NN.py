@@ -13,7 +13,7 @@ cls = dataset.iloc[:, 0]
 
 X_train, X_test, cls_train, cls_test = train_test_split(X, cls, test_size=0.2, random_state=42)
 startTime = time.time()
-knn = KNeighborsClassifier(n_neighbors=5)
+knn = KNeighborsClassifier(n_neighbors=5,metric='euclidean')
 
 model = knn.fit(X_train, cls_train)
 
